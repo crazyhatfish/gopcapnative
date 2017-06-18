@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
+	"os"
 
 	"github.com/crazyhatfish/gopcapnative"
 )
@@ -9,8 +11,15 @@ import (
 func main() {
 	fmt.Println("gopcapnative")
 
-	device := "\\\\.\\Global\\NPF_{7B6F50F2-CA58-4CDD-9DB3-0DE6148E482E}"
-	pcap, err := OpenLivePcap(device)
+	if len(os.Args) < 2 ||
+		(len(os.Args[1]) > 0 && os.Args[1][0] == '-') {
+		fmt.Printf("usage: %s <device>\n", os.Args[0])
+		return
+	}
+
+	// "\\\\.\\Global\\NPF_{7B6F50F2-CA58-4CDD-9DB3-0DE6148E482E}"
+	// "wlx801f02593400"
+	pcap, err := gopcapnative.OpenLivePcap(os.Args[1])
 	if err != nil {
 		panic(err)
 	}

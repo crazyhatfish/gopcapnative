@@ -6,9 +6,15 @@ portable pure Go packet sniffing with pcap-like API (WIP)
 ### Windows:
 - [WinPCAP](https://www.winpcap.org/install/default.htm) 4.1.3 (may work with earlier versions)
 
+## Notes
+
+### Linux:
+- Only supports `PF_PACKET`
+
 ## todo
 - [x] Support Windows (with WinPCAP)
-- [ ] Turn into a library
+- [x] Turn into a library
 - [ ] Support npcap
-- [ ] Support Linux, Mac
+- [x] Support Linux
+- [ ] Support Mac
 - [ ] Support wireless monitor mode

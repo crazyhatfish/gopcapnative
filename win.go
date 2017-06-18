@@ -7,8 +7,6 @@ import (
 
 	"bytes"
 	"encoding/binary"
-	"encoding/hex"
-	"fmt"
 	"io"
 	"strconv"
 	"strings"
@@ -115,6 +113,7 @@ func OpenLivePcap(device string) (*LivePcap, error) {
 
 	result.SetHwFilter(NDIS_PACKET_TYPE_PROMISCUOUS)
 	result.setIntParam(BIOCSMINTOCOPY, 0)
+	result.SetBufferSize(65536)
 
 	return result, nil
 }
@@ -132,9 +131,10 @@ func (this *LivePcap) setIntParam(ioControlCode uint32, val uint32) {
 	syscall.DeviceIoControl(this.handle, ioControlCode, &buffer[0], uint32(len(buffer)), nil, 0, &bytesReturned, nil)
 }
 
-func (this *LivePcap) SetBufferSize(size uint32) {
+func (this *LivePcap) SetBufferSize(size uint32) error {
 	this.bufferSize = size
 	this.setIntParam(BIOCSETBUFFERSIZE, size)
+	return nil
 }
 
 func (this *LivePcap) SetHwFilter(filter uint32) {
