@@ -1,5 +1,5 @@
 # gopcapnative
-portable pure Go packet sniffing with pcap-like API (WIP)
+portable pure Go packet sniffing with pcap-like API
 
 ## Dependencies
 
