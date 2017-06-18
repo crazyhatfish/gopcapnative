@@ -11,3 +11,4 @@ portable pure Go packet sniffing with pcap-like API (WIP)
 - [ ] Turn into a library
 - [ ] Support npcap
 - [ ] Support Linux, Mac
+- [ ] Support wireless monitor mode
