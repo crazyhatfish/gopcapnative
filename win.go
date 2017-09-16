@@ -26,7 +26,7 @@ type Adapter struct {
 	Path string
 }
 
-func getAdapters() ([]Adapter, error) {
+func GetAdapters() ([]Adapter, error) {
 	result := []Adapter{}
 
 	basePath := "SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}"
